@@ -12,6 +12,9 @@ def index(request):
 def detail(request,pk):
     post = get_object_or_404(Post,pk=pk)
     # 记得在顶部引入 markdown 模块
+
+    post.increase_views()
+
     post.body = markdown.markdown(post.body,
                                   extensions=[
                                      'markdown.extensions.extra',
