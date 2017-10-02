@@ -10,11 +10,9 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
+    paginate_by = 2
 
-class CategoryView(ListView):
-    model = Post
-    template_name = 'blog/index.html'
-    context_object_name = 'post_list'
+class CategoryView(IndexView):
 
     def get_queryset(self):
         cate = get_object_or_404(Category,pk=self.kwargs.get('pk'))
